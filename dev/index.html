@@ -1,0 +1,149 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&lt;fc-applayout> Demo</title>
+    <script type="module" src="../fc-applayout.js"></script>
+    <script type="module" src="../node_modules/@vaadin/vaadin-ordered-layout/vaadin-vertical-layout.js"></script>
+    <script type="module" src="../node_modules/@polymer/paper-card/paper-card.js"></script>
+    <style>
+      p {
+        border: solid 1px blue;
+        padding: 8px;
+      }
+
+      html, body {
+        margin: 0;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        background: #f1f1f1;
+        max-height: 368px;
+        max-width: 100%;
+      }
+
+      sample-content {
+        padding-top: 64px;
+      }
+
+      app-drawer {
+        --app-drawer-scrim-background: rgba(0, 0, 100, 0.8);
+        --app-drawer-content-container: {
+              background-color: #F1F1F1;
+            }
+        z-index: 1001;
+      }
+
+      app-drawer paper-listbox {
+        background-color:transparent;
+      }
+
+      img.applogo {
+        margin-right: 8px;
+        width:  48px;
+        height: 48px;	
+      }
+
+      .compact img.applogo {
+        width:  22px;
+        height: 22px;
+      }
+
+      .hamlet {
+        user-select: none;
+      }
+
+      .hamlet paper-card {
+        max-width: 600px;
+        min-width: 200px;
+      }
+
+      .hamlet paper-card.claudius {
+        background: rgb(220,248,198);
+      }
+
+      .hamlet paper-card h5 {margin-top: 0.25em}
+
+      .hamlet paper-card[elevation="0"] {
+        background: rgb(254,244,197);
+        border-radius: 8px;
+        min-width: 30%;
+        height: 42px;
+      }
+
+      .hamlet paper-card[elevation="0"] .card-content {
+        padding: 8px;
+        text-align: center;
+      }
+
+      menu-item vcf-toggle-button {
+        padding-bottom: 2px;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <fc-applayout title="Application Layout">
+      <div slot="profile" style="text-align: center;">
+        <img src="./avatar.png" alt="avatar" style="width: 80px; margin-top: 20px;">
+        <h4 slot="profile">User</h4>
+      </div>
+      <img slot="title" class="applogo" src="./applogo.png" alt="applogo">
+      <div slot="title" main-title="">AppLayout Vaadin 14 Demo</div>
+      <paper-icon-button slot="toolbar" icon="settings" title="Settings" role="button" tabindex="0" aria-disabled="false"></paper-icon-button>
+      <div slot="menu">
+        <p>This is menu</p>
+      </div>
+      <div slot="content">
+        <vaadin-vertical-layout class="hamlet" theme="padding spacing" style="width: 100%; align-items: center; height: 100%;"><paper-card elevation="0" aria-label=""><div class="card-content"><span>Enter King</span></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> 
+        I have sent to seek him and to find the body.
+        How dangerous is it that this man goes loose!
+        Yet must not we put the strong law on him.
+        He's loved of the distracted multitude,
+        Who like not in their judgment, but their eyes.
+        And where 'tis so, th' offender's scourge is weighed,
+        But never the offense. To bear all smooth and even,
+        This sudden sending him away must seem
+        Deliberate pause. Diseases desperate grown
+        By desperate appliance are relieved,
+        Or not at all.</span></div></div></paper-card><paper-card elevation="0" aria-label=""><div class="card-content"><span>Enter Rosencrantz</span></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span>
+        How now, what hath befall'n?</span></div></div></paper-card><paper-card elevation="1" aria-label="" style="align-self: flex-start;"><div class="card-content"><div><h5>Rosencrantz</h5><span> 
+        Where the dead body is bestowed, my lord,
+        We cannot get from him.</span></div></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> But where is he?</span></div></div></paper-card><paper-card elevation="1" aria-label="" style="align-self: flex-start;"><div class="card-content"><div><h5>Rosencrantz</h5><span> Without, my lord; guarded, to know your pleasure.</span></div></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> Bring him before us.</span></div></div></paper-card><paper-card elevation="1" aria-label="" style="align-self: flex-start;"><div class="card-content"><div><h5>Rosencrantz</h5><span> Ho, Guildenstern! Bring in my lord.</span></div></div></paper-card><paper-card elevation="0" aria-label=""><div class="card-content"><span>Enter Hamlet and Guildenstern, with Attendants</span></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> Now, Hamlet, where's Polonius?</span></div></div></paper-card><paper-card elevation="1" aria-label="" style="align-self: flex-start;"><div class="card-content"><div><h5>Hamlet</h5><span> At supper.</span></div></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> At supper? Where? </span></div></div></paper-card><paper-card elevation="1" aria-label="" style="align-self: flex-start;"><div class="card-content"><div><h5>Hamlet</h5><span> Not where he eats, but where he is eaten. A certain 
+        convocation of politic worms are e'en at him. Your worm is your 
+        only emperor for diet. We fat all creatures else to fat us, and 
+        we fat ourselves for maggots. Your fat king and your lean beggar 
+        is but variable service- two dishes, but to one table. That's the 
+        end.</span></div></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> Alas, alas!</span></div></div></paper-card><paper-card elevation="1" aria-label="" style="align-self: flex-start;"><div class="card-content"><div><h5>Hamlet</h5><span> A man may fish with the worm that hath eat of a king, and eat 
+        of the fish that hath fed of that worm.</span></div></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> What dost thou mean by this?</span></div></div></paper-card><paper-card elevation="1" aria-label="" style="align-self: flex-start;"><div class="card-content"><div><h5>Hamlet</h5><span> Nothing but to show you how a king may go a progress through 
+        the guts of a beggar.</span></div></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> Where is Polonius?</span></div></div></paper-card><paper-card elevation="1" aria-label="" style="align-self: flex-start;"><div class="card-content"><div><h5>Hamlet</h5><span> In heaven. Send thither to see. If your messenger find him not 
+        there, seek him i' th' other place yourself. But indeed, if you
+        find him not within this month, you shall nose him as you go up 
+        the stair, into the lobby.</span></div></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> Go seek him there.</span></div></div></paper-card><paper-card elevation="1" aria-label="" style="align-self: flex-start;"><div class="card-content"><div><h5>Hamlet</h5><span> He will stay till you come.</span></div></div></paper-card><paper-card elevation="0" aria-label=""><div class="card-content"><span>Exeunt Attendants</span></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> Hamlet, this deed, for thine especial safety,- 
+        Which we do tender as we dearly grieve 
+        For that which thou hast done,- must send thee hence 
+        With fiery quickness. Therefore prepare thyself. 
+        The bark is ready and the wind at help, 
+        Th' associates tend, and everything is bent 
+        For England.</span></div></div></paper-card><paper-card elevation="1" aria-label="" style="align-self: flex-start;"><div class="card-content"><div><h5>Hamlet</h5><span> For England?</span></div></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> Ay, Hamlet.</span></div></div></paper-card><paper-card elevation="1" aria-label="" style="align-self: flex-start;"><div class="card-content"><div><h5>Hamlet</h5><span> Good.</span></div></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> So is it, if thou knew'st our purposes.</span></div></div></paper-card><paper-card elevation="1" aria-label="" style="align-self: flex-start;"><div class="card-content"><div><h5>Hamlet</h5><span> I see a cherub that sees them. But come, for England! 
+        Farewell, dear mother.</span></div></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> Thy loving father, Hamlet.</span></div></div></paper-card><paper-card elevation="1" aria-label="" style="align-self: flex-start;"><div class="card-content"><div><h5>Hamlet</h5><span> My mother! Father and mother is man and wife; man and wife is
+        one flesh; and so, my mother. Come, for England!</span></div></div></paper-card><paper-card elevation="0" aria-label=""><div class="card-content"><span>Hamlet exits</span></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> Follow him at foot; tempt him with speed aboard. 
+        Delay it not; I'll have him hence to-night. 
+        Away! for everything is seal'd and done
+        That else leans on th' affair. Pray you make haste.</span></div></div></paper-card><paper-card elevation="0" aria-label=""><div class="card-content"><span>Exeunt Rosencrantz and Guildenstern</span></div></paper-card><paper-card class="claudius" elevation="1" aria-label="" style="align-self: flex-end;"><div class="card-content"><div><h5>Claudius</h5><span> And, England, if my love thou hold'st at aught,- 
+        As my great power thereof may give thee sense, 
+        Since yet thy cicatrice looks raw and red
+        After the Danish sword, and thy free awe 
+        Pays homage to us,- thou mayst not coldly set 
+        Our sovereign process, which imports at full, 
+        By letters congruing to that effect, 
+        The present death of Hamlet. Do it, England; 
+        For like the hectic in my blood he rages, 
+        And thou must cure me. Till I know 'tis done, 
+        Howe'er my haps, my joys were ne'er begun. </span></div></div></paper-card><paper-card elevation="0" aria-label=""><div class="card-content"><span>Claudius exits</span></div></paper-card></vaadin-vertical-layout>
+      </div>
+    </fc-applayout>
+  </body>
+</html>
