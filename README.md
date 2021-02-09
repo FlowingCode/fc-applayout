@@ -1,6 +1,6 @@
-# LitElement TypeScript starter 
+# fc-applayout
 
-This project includes a sample component using LitElement with TypeScript.
+Responsive and flexible LitElement based Application Layout
 
 ## Setup
 
@@ -12,9 +12,9 @@ npm i
 
 ## Build
 
-This sample uses the TypeScript compiler to produce JavaScript that runs in modern browsers.
+This project uses the TypeScript compiler to produce JavaScript that runs in modern browsers.
 
-To build the JavaScript version of your component:
+To build the JavaScript version of it:
 
 ```bash
 npm run build
@@ -30,7 +30,7 @@ Both the TypeScript compiler and lit-analyzer are configured to be very strict. 
 
 ## Testing
 
-This sample uses Karma, Chai, Mocha, and the open-wc test helpers for testing. See the [open-wc testing documentation](https://open-wc.org/testing/testing.html) for more information.
+This project uses Karma, Chai, Mocha, and the open-wc test helpers for testing. See the [open-wc testing documentation](https://open-wc.org/testing/testing.html) for more information.
 
 Tests can be run with the `test` script:
 
