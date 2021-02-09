@@ -1,7 +1,21 @@
 {
-  "name": "lit-element-starter-ts",
-  "version": "0.0.0",
-  "description": "A simple web component",
+  "name": "@flowingcode/fc-applayout",
+  "version": "0.9.1",
+  "description": "Responsive and flexible LitElement based Application Layout",
+  "keywords": [
+    "web-components",
+    "lit-element",
+    "typescript",
+    "layout"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlowingCode/fc-applayout.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FlowingCode/fc-applayout/issues"
+  },
+  "homepage": "https://github.com/FlowingCode/fc-applayout#readme",
   "main": "fc-applayout.js",
   "module": "fc-applayout.js",
   "type": "module",
@@ -28,15 +42,17 @@
     "test:prune-snapshots": "karma start karma.conf.cjs --prune-snapshots",
     "checksize": "rollup -c ; cat fc-applayout.bundled.js | gzip -9 | wc -c ; rm fc-applayout.bundled.js"
   },
-  "keywords": [
-    "web-components",
-    "lit-element",
-    "typescript"
-  ],
-  "author": "The Polymer Authors",
-  "license": "BSD-3-Clause",
+  "author": "Flowing Code",
+  "license": "Apache-2.0",
   "dependencies": {
-    "lit-element": "^2.3.1"
+    "lit-element": "^2.3.1",
+    "@polymer/app-layout": "^3.1.0",
+    "@polymer/font-roboto": "^3.0.2",
+    "@polymer/paper-icon-button": "^3.0.2",
+    "@polymer/iron-icons": "^3.0.1",
+    "@polymer/paper-card": "^3.0.1",
+    "@polymer/paper-listbox": "^3.0.1",
+    "@vaadin/vaadin-ordered-layout": "^1.4.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0",
