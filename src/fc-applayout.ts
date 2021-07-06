@@ -121,8 +121,11 @@ export class FcAppLayoutElement extends LitElement {
     this.drawer.toggle();
   }
 
-  foo(): string {
-    return 'foo';
+  constructor() {
+    super();
+    this.addEventListener('item-clicked', () => {
+      this.drawer.close();
+    });
   }
 
   firstUpdated() {
