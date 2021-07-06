@@ -85,35 +85,67 @@ export class FcAppLayoutElement extends LitElement {
   @property()
   title = 'AppLayout';
 
-  /**
-   * The number of times the button has been clicked.
-   */
-  @property({type: Number})
-  count = 0;
+ /**
+  * Sets if swiping opens the drawer
+  */
+  @property({type: Boolean})
+  swipeOpen = true;
 
+ /**
+  * Sets if scrolling up will reveal the header
+  */
+  @property({type: Boolean})
+  reveals = true;    
+
+ /**
+  * Sets the drawer visibility
+  */
+  @property({type: Boolean})
+  drawerVisible = true;    
+  
+  /**
+  * Sets header fixed
+  */
+  @property({type: Boolean})
+  fixed = false;    
+
+ /**
+  * The alignment of the drawer on the screen ('left', 'right', 'start' or
+  * 'end'). 'start' computes to left and 'end' to right in LTR layout and
+  * vice versa in RTL layout.
+  */
+  @property({type: String})
+  drawerAlign = "left";
+
+ /**
+  * Sets header fixed
+  */
+  @property({type: Boolean})
+  shadow = true;    
+  
   @query('#drawer')
   drawer!: AppDrawerElement;
 
   render() {
     return html`
-      <div style="width: 100%; height: 64px;">
-        <app-header effects="" reveals="" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-          <app-toolbar style="height: 64px; transform: translate3d(0px, 0px, 0px);">
-            <paper-icon-button @click="${this.clickHandler}" icon="menu" role="button" tabindex="0" aria-disabled="false"></paper-icon-button>
+      <div>
+        <app-header id="header" effects="" ?shadow=${this.shadow} ?reveals=${this.reveals} ?fixed=${this.fixed} style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+          <app-toolbar style="height: 100%; transform: translate3d(0px, 0px, 0px);">
+            <paper-icon-button ?hidden=${!this.drawerVisible} @click="${this.clickHandler}" icon="menu" role="button" tabindex="0" aria-disabled="false"></paper-icon-button>
             <div style="display:flex; align-items: center; width: 100%">
               <slot name="title"></slot>
             </div>
             <slot name="toolbar"></slot>
           </app-toolbar>
         </app-header>
-        <app-drawer swipeOpen="" id="drawer" position="left" style="transition-duration: 200ms; touch-action: pan-y;">
+        <app-drawer align="${this.drawerAlign}" ?swipe-open=${this.swipeOpen} id="drawer" style="transition-duration: 200ms; touch-action: pan-y;">
           <slot name="profile"></slot>
           <paper-listbox role="listbox" tabindex="0">
             <slot name="menu"></slot>
           </paper-listbox>
         </app-drawer>
+        <div><slot name="content"></slot></div>
       </div>
-      <div><slot name="content"></slot></div>
     `;
   }
 
