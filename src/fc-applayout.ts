@@ -70,7 +70,9 @@ export class FcAppLayoutElement extends LitElement {
 
     app-drawer paper-listbox {
         overflow-y: auto;
+        flex-grow: 1;
     }
+
     :host {
       width: 100%;
       height: 100%;
@@ -122,6 +124,12 @@ export class FcAppLayoutElement extends LitElement {
   foo(): string {
     return 'foo';
   }
+
+  firstUpdated() {
+    this.drawer.shadowRoot!.getElementById("contentContainer")!.style.display="flex";
+    this.drawer.shadowRoot!.getElementById("contentContainer")!.style.flexDirection="column";
+  }
+
 }
 
 declare global {
