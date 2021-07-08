@@ -32,6 +32,8 @@ import "@polymer/app-layout/app-header/app-header";
  */
 @customElement('fc-applayout')
 export class FcAppLayoutElement extends ThemableElement {
+  static get is() { return 'fc-applayout'; }
+
   static styles = css`
     fc-menuitem fc-menuitem {
       background-color: var(--lumo-primary-color-10pct);
