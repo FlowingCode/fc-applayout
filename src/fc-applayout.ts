@@ -12,8 +12,9 @@
  * http://polymer.github.io/PATENTS.txt
  */
 
-import {LitElement, html, customElement, property, css, query} from 'lit-element';
+import {html, customElement, property, css, query} from 'lit-element';
 import {AppDrawerElement} from '@polymer/app-layout/app-drawer/app-drawer';
+import {ThemableElement} from '@vaadin/themable-element/themable-element.js';
 import "@polymer/app-layout/app-scroll-effects/app-scroll-effects";
 import "@polymer/font-roboto/roboto";
 import '@polymer/app-layout/app-layout';
@@ -30,7 +31,7 @@ import "@polymer/app-layout/app-header/app-header";
  * @csspart button - The button
  */
 @customElement('fc-applayout')
-export class FcAppLayoutElement extends LitElement {
+export class FcAppLayoutElement extends ThemableElement {
   static styles = css`
     fc-menuitem fc-menuitem {
       background-color: var(--lumo-primary-color-10pct);
