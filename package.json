@@ -52,7 +52,8 @@
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-card": "^3.0.1",
     "@polymer/paper-listbox": "^3.0.1",
-    "@vaadin/vaadin-ordered-layout": "^1.4.0"
+    "@vaadin/vaadin-ordered-layout": "^1.4.0",
+    "@vaadin/themable-element": "^0.3.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0",
