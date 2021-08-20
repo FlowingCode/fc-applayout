@@ -27,6 +27,10 @@
         padding-top: 64px;
       }
 
+      fc-applayout {
+        --lumo-disabled-text-color: rgba(28, 52, 84, 0.26)
+      }
+
       app-drawer {
         --app-drawer-scrim-background: rgba(0, 0, 100, 0.8);
         --app-drawer-content-container: {
@@ -92,6 +96,7 @@
       </div>
       <img slot="title" class="applogo" src="./applogo.png" alt="applogo">
       <div slot="title" main-title="">AppLayout Vaadin 14 Demo</div>
+      <paper-icon-button disabled slot="toolbar" icon="block" role="button" tabindex="0" aria-disabled="false"></paper-icon-button>
       <paper-icon-button slot="toolbar" icon="settings" title="Settings" role="button" tabindex="0" aria-disabled="false"></paper-icon-button>
       <div slot="menu">
         <p onclick="this.dispatchEvent(new CustomEvent('item-clicked', {bubbles: true}))">This is menu</p>
