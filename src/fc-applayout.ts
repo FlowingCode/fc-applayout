@@ -35,10 +35,6 @@ export class FcAppLayoutElement extends ThemableElement {
   static get is() { return 'fc-applayout'; }
 
   static styles = css`
-    fc-menuitem fc-menuitem {
-      background-color: var(--lumo-primary-color-10pct);
-    }
-
     app-toolbar {
       background-color: #4285f4;
       color: #fff;
