@@ -44,7 +44,7 @@ export class FcAppLayoutElement extends ThemableElement {
       margin-left: 24px;
     }
 
-    paper-icon-button {
+    ::slotted(paper-icon-button[slot="toolbar"]) {
       --paper-icon-button-disabled-text: var(--lumo-disabled-text-color);
     }
 
