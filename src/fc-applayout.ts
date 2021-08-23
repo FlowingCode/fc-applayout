@@ -14,6 +14,7 @@
 
 import {html, customElement, property, css, query} from 'lit-element';
 import {AppDrawerElement} from '@polymer/app-layout/app-drawer/app-drawer';
+import {AppHeaderElement} from '@polymer/app-layout/app-header/app-header';
 import {ThemableElement} from '@vaadin/themable-element/themable-element.js';
 import "@polymer/app-layout/app-scroll-effects/app-scroll-effects";
 import "@polymer/font-roboto/roboto";
@@ -22,7 +23,6 @@ import '@polymer/iron-icons/iron-icons';
 import '@polymer/paper-icon-button/paper-icon-button';
 import '@polymer/paper-listbox/paper-listbox';
 import "@polymer/app-layout/app-toolbar/app-toolbar";
-import "@polymer/app-layout/app-header/app-header";
 
 /**
  * An example element.
@@ -121,9 +121,21 @@ export class FcAppLayoutElement extends ThemableElement {
   */
   @property({type: Boolean})
   shadow = true;    
-  
+
+ /**
+  * Makes the drawer to be opened by default, in a non modal way
+  */
+  @property({type: Boolean})
+  drawerPersistent = false;    
+
   @query('#drawer')
   drawer!: AppDrawerElement;
+
+  @query('#header')
+  header!: AppHeaderElement;
+
+  @query('#content')
+  content!: HTMLDivElement;
 
   render() {
     return html`
@@ -137,31 +149,54 @@ export class FcAppLayoutElement extends ThemableElement {
             <slot name="toolbar"></slot>
           </app-toolbar>
         </app-header>
-        <app-drawer part="drawer" align="${this.drawerAlign}" ?swipe-open=${this.swipeOpen} id="drawer" style="transition-duration: 200ms; touch-action: pan-y;">
+        <app-drawer ?persistent=${this.drawerPersistent} part="drawer" align="${this.drawerAlign}" ?swipe-open=${this.swipeOpen} id="drawer" style="transition-duration: 200ms; touch-action: pan-y;">
           <slot name="profile"></slot>
           <paper-listbox role="listbox" tabindex="0">
             <slot name="menu"></slot>
           </paper-listbox>
         </app-drawer>
-        <div><slot name="content"></slot></div>
+        <div id="content"><slot name="content"></slot></div>
       </div>
     `;
   }
 
   clickHandler() {
     this.drawer.toggle();
+    this._updateLeftMargin();
   }
 
   constructor() {
     super();
     this.addEventListener('item-clicked', () => {
-      this.drawer.close();
+      if (!this.drawerPersistent) {
+        this.drawer.close();
+      }
     });
   }
 
   firstUpdated() {
     this.drawer.shadowRoot!.getElementById("contentContainer")!.style.display="flex";
     this.drawer.shadowRoot!.getElementById("contentContainer")!.style.flexDirection="column";
+  }
+
+  updated(changedProps: { has: (arg0: string) => any; get: (arg0: string) => any; }) {
+    if (changedProps.has('drawerPersistent')) {
+      this.drawer.opened=this.drawerPersistent;
+      this._updateLeftMargin();
+    }
+  }
+
+  _updateLeftMargin() {
+    if (this.drawerPersistent) {
+      if (this.drawer.opened) {
+        let marginWidth = this.drawer.clientWidth + "px";
+          this.header.style.marginLeft = marginWidth;
+        this.content.style.marginLeft = marginWidth;
+      } else {
+          this.header.style.marginLeft = "0px";
+        this.content.style.marginLeft = "0px";
+      }
+    }
   }
 
 }
