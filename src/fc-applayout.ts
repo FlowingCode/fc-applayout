@@ -128,6 +128,12 @@ export class FcAppLayoutElement extends ThemableElement {
   @property({type: Boolean})
   drawerPersistent = false;    
 
+ /**
+  * Makes the drawer to be shown below the header
+  */
+  @property({type: Boolean})
+  drawerBelowHeader = false;
+  
   @query('#drawer')
   drawer!: AppDrawerElement;
 
@@ -184,16 +190,33 @@ export class FcAppLayoutElement extends ThemableElement {
       this.drawer.opened=this.drawerPersistent;
       this._updateLeftMargin();
     }
+    if (changedProps.has('drawerBelowHeader')) {
+      this._updateZIndex();
+    }
+  }
+
+  private _updateZIndex() {
+    if (this.drawerBelowHeader) {
+      this.header.style.zIndex = "1001";
+      this.drawer.style.top = this.header.clientHeight - 120 + "px";
+    } else {
+      this.header.style.zIndex = "1000";
+      this.drawer.style.top = "-120px";
+    }
   }
 
   _updateLeftMargin() {
     if (this.drawerPersistent) {
       if (this.drawer.opened) {
         let marginWidth = this.drawer.clientWidth + "px";
+        if (!this.drawerBelowHeader) {
           this.header.style.marginLeft = marginWidth;
+        }
         this.content.style.marginLeft = marginWidth;
       } else {
+        if (!this.drawerBelowHeader) {
           this.header.style.marginLeft = "0px";
+        }
         this.content.style.marginLeft = "0px";
       }
     }
