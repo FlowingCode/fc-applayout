@@ -1,6 +1,6 @@
 {
   "name": "@flowingcode/fc-applayout",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Responsive and flexible LitElement based Application Layout",
   "keywords": [
     "web-components",
