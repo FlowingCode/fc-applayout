@@ -1,6 +1,29 @@
+[![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/flowingcodefc-applayout)
+[![npm version](https://badgen.net/npm/v/@flowingcode/fc-applayout)](https://www.npmjs.com/package/@flowingcode/fc-applayout)
 # fc-applayout
 
-Responsive and flexible LitElement based Application Layout
+Responsive and flexible LitElement based Application Layout. Built using [@polymer/app-layout](https://www.webcomponents.org/element/@polymer/app-layout)
+
+## Features
+* Configurable Profile section in Drawer
+* Configurable Title section in main header
+* Components in toolbar
+* Components in menu section in drawer
+* Easy to setup, just a single element
+
+![GIF for fc-applayout](./Demo.gif)
+
+## Example
+```html
+<fc-applayout title="Application Layout">
+      <div slot="title" main-title="">AppLayout  Demo</div>
+      <paper-icon-button slot="toolbar" icon="settings" title="Settings" role="button"></paper-icon-button>
+      <div slot="menu">
+        <p onclick="this.dispatchEvent(new CustomEvent('item-clicked', {bubbles: true}))">This is menu</p>
+      </div>
+      <div>Content</div>
+</fc-applayout>
+```
 
 ## Setup
 
@@ -113,6 +136,8 @@ This starter project doesn't include any build-time optimizations like bundling 
 
 For information on building application projects that include LitElement components, see [Build for production](https://lit-element.polymer-project.org/guide/build) on the LitElement site.
 
-## More information
+## License & Author
 
-See [Get started](https://lit-element.polymer-project.org/guide/start) on the LitElement site for more information.
+Add-on is distributed under Apache License 2.0. For license terms, see LICENSE.txt.
+
+fc-applayout is written by [Flowing Code S.A.](https://www.flowingcode.com)
