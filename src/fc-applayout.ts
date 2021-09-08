@@ -174,7 +174,7 @@ export class FcAppLayoutElement extends ThemableElement {
 
   clickHandler() {
     this.drawer.toggle();
-    this._updateLeftMargin();
+    this._updateMargin();
   }
 
   constructor() {
@@ -194,7 +194,7 @@ export class FcAppLayoutElement extends ThemableElement {
   updated(changedProps: { has: (arg0: string) => any; get: (arg0: string) => any; }) {
     if (changedProps.has('drawerPersistent')) {
       this.drawer.opened=this.drawerPersistent;
-      this._updateLeftMargin();
+      this._updateMargin();
     }
     if (changedProps.has('drawerBelowHeader')) {
       this._updateZIndex();
@@ -211,19 +211,23 @@ export class FcAppLayoutElement extends ThemableElement {
     }
   }
 
-  _updateLeftMargin() {
+  _updateMargin() {
     if (this.drawerPersistent) {
-      if (this.drawer.opened) {
-        let marginWidth = this.drawer.clientWidth + "px";
-        if (!this.drawerBelowHeader) {
+      let marginWidth = this.drawer.clientWidth + "px";
+      if (!this.drawer.opened) {
+        this.content.style.marginLeft = "0px";
+      }
+      if (!this.drawerBelowHeader) {
+        if (this.drawerAlign=="right") {
+          this.header.style.marginRight = marginWidth;
+        } else {
           this.header.style.marginLeft = marginWidth;
         }
-        this.content.style.marginLeft = marginWidth;
+      }
+      if (this.drawerAlign=="right") {
+        this.content.style.marginRight = marginWidth;
       } else {
-        if (!this.drawerBelowHeader) {
-          this.header.style.marginLeft = "0px";
-        }
-        this.content.style.marginLeft = "0px";
+        this.content.style.marginLeft = marginWidth;
       }
     }
   }
