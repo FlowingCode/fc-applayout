@@ -38,6 +38,11 @@ export class FcAppLayoutElement extends ThemableElement {
     app-toolbar {
       background-color: #4285f4;
       color: #fff;
+      display:flex;
+    }
+
+    app-toolbar.alignRight {
+      flex-direction: row-reverse;
     }
 
     paper-icon-button + [main-title] {
@@ -147,13 +152,12 @@ export class FcAppLayoutElement extends ThemableElement {
     return html`
       <div>
         <app-header part="header" id="header" effects="" ?shadow=${this.shadow} ?reveals=${this.reveals} ?fixed=${this.fixed} style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-          <app-toolbar part="toolbar" style="transform: translate3d(0px, 0px, 0px);">
-            <paper-icon-button ?hidden=${!this.drawerVisible || (this.drawerAlign=="right")} @click="${this.clickHandler}" icon="menu" role="button" tabindex="0" aria-disabled="false"></paper-icon-button>
+          <app-toolbar part="toolbar" class=${this.drawerAlign=="right"?"alignRight":""} style="transform: translate3d(0px, 0px, 0px);">
+            <paper-icon-button ?hidden=${!this.drawerVisible} @click="${this.clickHandler}" icon="menu" role="button" tabindex="0" aria-disabled="false"></paper-icon-button>
             <div style="display:flex; align-items: center; width: 100%">
               <slot name="title"></slot>
             </div>
             <slot name="toolbar"></slot>
-            <paper-icon-button ?hidden=${!this.drawerVisible || this.drawerAlign!="right"} @click="${this.clickHandler}" icon="menu" role="button" tabindex="0" aria-disabled="false"></paper-icon-button>
           </app-toolbar>
         </app-header>
         <app-drawer ?persistent=${this.drawerPersistent} part="drawer" align="${this.drawerAlign}" ?swipe-open=${this.swipeOpen} id="drawer" style="transition-duration: 200ms; touch-action: pan-y;">
