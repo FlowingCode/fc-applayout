@@ -40,6 +40,7 @@ export class FcAppLayoutElement extends ThemableElement {
       color: #fff;
       transform: translate3d(0px, 0px, 0px);
       display:flex;
+      height: var(--app-header-height, 64px);
     }
 
     app-toolbar.alignRight {
@@ -76,6 +77,17 @@ export class FcAppLayoutElement extends ThemableElement {
     app-drawer paper-listbox {
         overflow-y: auto;
         flex-grow: 1;
+    }
+
+    .content-container {
+      width:100%; 
+      height:calc( 100% - var(--app-header-height, 64px) ); 
+      transform: translateY(var(--app-header-height, 64px));
+    }
+
+    .layout-container {
+      height:100%;
+      width:100%; 
     }
 
     :host {
@@ -151,7 +163,7 @@ export class FcAppLayoutElement extends ThemableElement {
 
   render() {
     return html`
-      <div>
+      <div class="layout-container">
         <app-header part="header" id="header" effects="" ?shadow=${this.shadow} ?reveals=${this.reveals} ?fixed=${this.fixed} style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
           <app-toolbar part="toolbar" class=${this.drawerAlign=="right"?"alignRight":""}>
             <paper-icon-button ?hidden=${!this.drawerVisible} @click="${this.clickHandler}" icon="menu" role="button" tabindex="0" aria-disabled="false"></paper-icon-button>
@@ -167,7 +179,7 @@ export class FcAppLayoutElement extends ThemableElement {
             <slot name="menu"></slot>
           </paper-listbox>
         </app-drawer>
-        <div id="content"><slot></slot></div>
+        <div class="content-container" id="content"><slot name="content"></slot></div>
       </div>
     `;
   }
