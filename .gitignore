@@ -1,9 +1,11 @@
-/node_modules/
-/lib/
-/test/
+node_modules/
+lib/
+test/
 
 # top level source
 fc-applayout.js
 fc-applayout.js.map
 fc-applayout.d.ts
 fc-applayout.d.ts.map
+dist/
+.parcel-cache/
