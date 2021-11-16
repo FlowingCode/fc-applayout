@@ -9,3 +9,4 @@ fc-applayout.d.ts
 fc-applayout.d.ts.map
 dist/
 .parcel-cache/
+.cache
