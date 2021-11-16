@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/FlowingCode/fc-applayout#readme",
   "main": "fc-applayout.js",
-  "module": "fc-applayout.js",
   "type": "module",
   "scripts": {
     "build": "tsc",
