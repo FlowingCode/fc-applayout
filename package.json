@@ -21,6 +21,7 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
+    "buildstatic": "tsc && parcel build dev/index.html",
     "clean": "rimraf fc-applayout.{d.ts,d.ts.map,js,js.map} test/fc-applayout.{d.ts,d.ts.map,js,js.map} test/fc-applayout_test.{d.ts,d.ts.map,js,js.map}",
     "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
     "lint:eslint": "eslint 'src/**/*.ts'",
