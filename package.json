@@ -16,7 +16,10 @@
     "url": "https://github.com/FlowingCode/fc-applayout/issues"
   },
   "homepage": "https://github.com/FlowingCode/fc-applayout#readme",
-  "main": "fc-applayout.js",
+  "main": "src/fc-applayout.ts",
+  "targets": {
+    "main": false
+  },
   "type": "module",
   "scripts": {
     "build": "tsc",
