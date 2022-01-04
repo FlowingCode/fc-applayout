@@ -96,12 +96,6 @@ export class FcAppLayoutElement extends ThemableElement {
     }
   `;
 
-  /**
-   * The title of the application
-   */
-  @property()
-  title = 'AppLayout';
-
  /**
   * Sets if swiping opens the drawer
   */
