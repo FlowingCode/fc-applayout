@@ -173,7 +173,7 @@ export class FcAppLayoutElement extends ThemableElement {
             <slot name="menu"></slot>
           </paper-listbox>
         </app-drawer>
-        <div class="content-container" id="content"><slot name="content"></slot></div>
+        <div class="content-container" id="content"><slot></slot></div>
       </div>
     `;
   }
