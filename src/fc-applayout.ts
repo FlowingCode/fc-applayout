@@ -218,27 +218,60 @@ export class FcAppLayoutElement extends ThemableElement {
   }
 
   _updateMargin() {
+    let marginWidth = this.drawer.clientWidth + "px";
     if (this.drawerPersistent) {
-      let marginWidth = this.drawer.clientWidth + "px";
-      if (!this.drawer.opened) {
-        this.content.style.marginLeft = "0px";
-      }
-      if (!this.drawerBelowHeader) {
-        if (this.drawerAlign=="right") {
-          this.header.style.marginRight = marginWidth;
+      //TRUE TRUE
+      if(this.drawerBelowHeader){
+        if(this.drawer.opened) {
+          if (this.drawerAlign == "right") {
+            this.header.style.marginRight = "0px";
+            this.content.style.marginRight = marginWidth;
+          } else {
+            this.header.style.marginLeft = "0px";
+            this.content.style.marginLeft = marginWidth;
+          }
         } else {
-          this.header.style.marginLeft = marginWidth;
+          if (this.drawerAlign == "right") {
+            this.header.style.marginRight = "0px";
+            this.content.style.marginRight = "0px";
+          } else {
+            this.header.style.marginLeft = "0px";
+            this.content.style.marginLeft = "0px";
+          }
+        }
+      } else {//TRUE FALSE
+        if(this.drawer.opened) {
+          if (this.drawerAlign == "right") {
+            this.header.style.marginRight = marginWidth;
+            this.content.style.marginRight = marginWidth;
+          } else {
+            this.header.style.marginLeft = marginWidth;
+            this.content.style.marginLeft = marginWidth;
+          }
+        } else {
+          if (this.drawerAlign == "right") {
+            this.header.style.marginRight = "0px";
+            this.content.style.marginRight = "0px";
+          } else {
+            this.header.style.marginLeft = "0px";
+            this.content.style.marginLeft = "0px";
+          }
         }
       }
-      if (this.drawerAlign=="right") {
-        this.content.style.marginRight = marginWidth;
-      } else {
-        this.content.style.marginLeft = marginWidth;
+
+    } else {
+      //FALSE TRUE
+      //FALSE FALSE
+        if (this.drawerAlign == "right") {
+          this.header.style.marginRight = "0px";
+          this.content.style.marginRight = "0px";
+        } else {
+          this.header.style.marginLeft = "0px";
+          this.content.style.marginLeft = "0px";
+        }
       }
     }
   }
-
-}
 
 declare global {
   interface HTMLElementTagNameMap {
