@@ -12,10 +12,12 @@
  * http://polymer.github.io/PATENTS.txt
  */
 
-import {html, customElement, property, css, query} from 'lit-element';
+import {html, css, LitElement} from 'lit';
+import {property} from 'lit/decorators/property.js';
+import {query} from 'lit/decorators/query.js';
+import {customElement} from 'lit/decorators/custom-element.js';
 import {AppDrawerElement} from '@polymer/app-layout/app-drawer/app-drawer';
 import {AppHeaderElement} from '@polymer/app-layout/app-header/app-header';
-import {ThemableElement} from '@vaadin/themable-element/themable-element.js';
 import "@polymer/app-layout/app-scroll-effects/app-scroll-effects";
 import "@polymer/font-roboto/roboto";
 import '@polymer/app-layout/app-layout';
@@ -23,6 +25,7 @@ import '@polymer/iron-icons/iron-icons';
 import '@polymer/paper-icon-button/paper-icon-button';
 import '@polymer/paper-listbox/paper-listbox';
 import "@polymer/app-layout/app-toolbar/app-toolbar";
+import { ThemableMixin } from '@vaadin/vaadin-themable-mixin';
 
 /**
  * An example element.
@@ -31,10 +34,10 @@ import "@polymer/app-layout/app-toolbar/app-toolbar";
  * @csspart button - The button
  */
 @customElement('fc-applayout')
-export class FcAppLayoutElement extends ThemableElement {
+export class FcAppLayoutElement extends ThemableMixin(LitElement) {
   static get is() { return 'fc-applayout'; }
 
-  static styles = css`
+  static override styles = css`
     app-toolbar {
       background-color: #4285f4;
       color: #fff;
@@ -155,7 +158,7 @@ export class FcAppLayoutElement extends ThemableElement {
   @query('#content')
   content!: HTMLDivElement;
 
-  render() {
+  override render() {
     return html`
       <div class="layout-container">
         <app-header part="header" id="header" effects="" ?shadow=${this.shadow} ?reveals=${this.reveals} ?fixed=${this.fixed} style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
@@ -192,12 +195,12 @@ export class FcAppLayoutElement extends ThemableElement {
     });
   }
 
-  firstUpdated() {
+  override firstUpdated() {
     this.drawer.shadowRoot!.getElementById("contentContainer")!.style.display="flex";
     this.drawer.shadowRoot!.getElementById("contentContainer")!.style.flexDirection="column";
   }
 
-  updated(changedProps: { has: (arg0: string) => any; get: (arg0: string) => any; }) {
+  override updated(changedProps: { has: (arg0: string) => any; get: (arg0: string) => any; }) {
     if (changedProps.has('drawerPersistent')) {
       this.drawer.opened=this.drawerPersistent;
       this._updateMargin();
