@@ -130,6 +130,12 @@ npm run docs:watch
 
 The site will usually be served at http://localhost:8000.
 
+### Alternate way of building static demo site
+
+```bash
+npx -p parcel npm run buildstatic
+```
+
 ## Bundling and minification
 
 This starter project doesn't include any build-time optimizations like bundling or minification. We recommend publishing components as unoptimized JavaScript modules, and performing build-time optimizations at the application level. This gives build tools the best chance to deduplicate code, remove dead code, and so on.

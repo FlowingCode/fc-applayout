@@ -1,52 +1,260 @@
 {
-  "version": "experimental",
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "fc-applayout",
-      "path": "./src/fc-applayout.ts",
-      "description": "An example element.",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "src/fc-applayout.ts",
+      "declarations": [
         {
-          "name": "name",
-          "description": "The name to say \"Hello\" to.",
-          "type": "string",
-          "default": "\"World\""
+          "kind": "class",
+          "description": "An example element.",
+          "name": "FcAppLayoutElement",
+          "cssParts": [
+            {
+              "description": "The button",
+              "name": "button"
+            }
+          ],
+          "slots": [
+            {
+              "description": "This element has a slot",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "is",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "swipeOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Sets if swiping opens the drawer",
+              "attribute": "swipeOpen"
+            },
+            {
+              "kind": "field",
+              "name": "reveals",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Sets if scrolling up will reveal the header",
+              "attribute": "reveals"
+            },
+            {
+              "kind": "field",
+              "name": "drawerVisible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Sets the drawer visibility",
+              "attribute": "drawerVisible"
+            },
+            {
+              "kind": "field",
+              "name": "fixed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Sets header fixed",
+              "attribute": "fixed"
+            },
+            {
+              "kind": "field",
+              "name": "drawerAlign",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"left\"",
+              "description": "The alignment of the drawer on the screen ('left', 'right', 'start' or\n'end'). 'start' computes to left and 'end' to right in LTR layout and\nvice versa in RTL layout.",
+              "attribute": "drawerAlign"
+            },
+            {
+              "kind": "field",
+              "name": "shadow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Sets header fixed",
+              "attribute": "shadow"
+            },
+            {
+              "kind": "field",
+              "name": "drawerPersistent",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Makes the drawer to be opened by default, in a non modal way",
+              "attribute": "drawerPersistent"
+            },
+            {
+              "kind": "field",
+              "name": "drawerBelowHeader",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Makes the drawer to be shown below the header",
+              "attribute": "drawerBelowHeader"
+            },
+            {
+              "kind": "field",
+              "name": "drawer",
+              "type": {
+                "text": "AppDrawerElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "header",
+              "type": {
+                "text": "AppHeaderElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "content",
+              "type": {
+                "text": "HTMLDivElement"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "clickHandler"
+            },
+            {
+              "kind": "method",
+              "name": "_updateZIndex",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_updateMargin"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "swipeOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Sets if swiping opens the drawer",
+              "fieldName": "swipeOpen"
+            },
+            {
+              "name": "reveals",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Sets if scrolling up will reveal the header",
+              "fieldName": "reveals"
+            },
+            {
+              "name": "drawerVisible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Sets the drawer visibility",
+              "fieldName": "drawerVisible"
+            },
+            {
+              "name": "fixed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Sets header fixed",
+              "fieldName": "fixed"
+            },
+            {
+              "name": "drawerAlign",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"left\"",
+              "description": "The alignment of the drawer on the screen ('left', 'right', 'start' or\n'end'). 'start' computes to left and 'end' to right in LTR layout and\nvice versa in RTL layout.",
+              "fieldName": "drawerAlign"
+            },
+            {
+              "name": "shadow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Sets header fixed",
+              "fieldName": "shadow"
+            },
+            {
+              "name": "drawerPersistent",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Makes the drawer to be opened by default, in a non modal way",
+              "fieldName": "drawerPersistent"
+            },
+            {
+              "name": "drawerBelowHeader",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Makes the drawer to be shown below the header",
+              "fieldName": "drawerBelowHeader"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "ThemableMixin",
+              "package": "@vaadin/vaadin-themable-mixin"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fc-applayout",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FcAppLayoutElement",
+          "declaration": {
+            "name": "FcAppLayoutElement",
+            "module": "src/fc-applayout.ts"
+          }
         },
         {
-          "name": "count",
-          "description": "The number of times the button has been clicked.",
-          "type": "number",
-          "default": "0"
-        }
-      ],
-      "properties": [
-        {
-          "name": "name",
-          "attribute": "name",
-          "description": "The name to say \"Hello\" to.",
-          "type": "string",
-          "default": "\"World\""
-        },
-        {
-          "name": "count",
-          "attribute": "count",
-          "description": "The number of times the button has been clicked.",
-          "type": "number",
-          "default": "0"
-        }
-      ],
-      "slots": [
-        {
-          "name": "",
-          "description": "This element has a slot"
-        }
-      ],
-      "cssParts": [
-        {
-          "name": "button",
-          "description": "The button"
+          "kind": "custom-element-definition",
+          "name": "fc-applayout",
+          "declaration": {
+            "name": "FcAppLayoutElement",
+            "module": "src/fc-applayout.ts"
+          }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/test/fc-applayout_test.ts",
+      "declarations": [],
+      "exports": []
     }
   ]
 }
