@@ -1,0 +1,8 @@
+node_modules/
+lib/
+test/
+docs-src/
+
+# top level source
+.parcel-cache/
+.cache
