@@ -28,10 +28,18 @@ import "@polymer/app-layout/app-toolbar/app-toolbar";
 import { ThemableMixin } from '@vaadin/vaadin-themable-mixin';
 
 /**
- * An example element.
+ * FcAppLayoutElement is a custom web component that provides a responsive and customizable application layout.
+ * It is based on Polymer's AppLayout components but built with Lit.
+ * The layout includes an app-header, app-drawer, and a content area, which can be customized using various properties and slots.
  *
- * @slot - This element has a slot
- * @csspart button - The button
+ * @slot title - Slot for the main title or logo in the app-header.
+ * @slot toolbar - Slot for additional toolbar elements in the app-header.
+ * @slot profile - Slot for the profile information in the app-drawer.
+ * @slot menu - Slot for the menu items in the app-drawer.
+ * @csspart header - CSS part for the app-header.
+ * @csspart toolbar - CSS part for the app-toolbar.
+ * @csspart drawer - CSS part for the app-drawer.
+ * @csspart menu-container - CSS part for the paper-listbox in the app-drawer.
  */
 @customElement('fc-applayout')
 export class FcAppLayoutElement extends ThemableMixin(LitElement) {
@@ -99,53 +107,60 @@ export class FcAppLayoutElement extends ThemableMixin(LitElement) {
     }
   `;
 
- /**
-  * Sets if swiping opens the drawer
-  */
+  /**
+   * Sets if swiping opens the drawer.
+   * @type {boolean}
+   */
   @property({type: Boolean})
   swipeOpen = true;
 
- /**
-  * Sets if scrolling up will reveal the header
-  */
+  /**
+   * Sets if scrolling up will reveal the header.
+   * @type {boolean}
+   */
   @property({type: Boolean})
   reveals = true;    
 
- /**
-  * Sets the drawer visibility
-  */
+  /**
+   * Sets the drawer visibility.
+   * @type {boolean}
+   */
   @property({type: Boolean})
   drawerVisible = true;    
   
   /**
-  * Sets header fixed
-  */
+   * Sets header fixed.
+   * @type {boolean}
+   */
   @property({type: Boolean})
   fixed = false;    
 
- /**
-  * The alignment of the drawer on the screen ('left', 'right', 'start' or
-  * 'end'). 'start' computes to left and 'end' to right in LTR layout and
-  * vice versa in RTL layout.
-  */
+  /**
+   * The alignment of the drawer on the screen ('left', 'right', 'start' or 'end').
+   * 'start' computes to left and 'end' to right in LTR layout and vice versa in RTL layout.
+   * @type {string}
+   */
   @property({type: String})
   drawerAlign = "left";
 
- /**
-  * Sets header fixed
-  */
+  /**
+   * Sets header shadow.
+   * @type {boolean}
+   */
   @property({type: Boolean})
   shadow = true;    
 
- /**
-  * Makes the drawer to be opened by default, in a non modal way
-  */
+  /**
+   * Makes the drawer to be opened by default, in a non modal way.
+   * @type {boolean}
+   */
   @property({type: Boolean})
   drawerPersistent = false;    
 
- /**
-  * Makes the drawer to be shown below the header
-  */
+  /**
+   * Makes the drawer to be shown below the header.
+   * @type {boolean}
+   */
   @property({type: Boolean})
   drawerBelowHeader = false;
   
