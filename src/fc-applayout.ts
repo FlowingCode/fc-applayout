@@ -172,7 +172,7 @@ export class FcAppLayoutElement extends ThemableMixin(LitElement) {
         </app-header>
         <app-drawer ?persistent=${this.drawerPersistent} part="drawer" align="${this.drawerAlign}" ?swipe-open=${this.swipeOpen} id="drawer" style="transition-duration: 200ms; touch-action: pan-y;">
           <slot name="profile"></slot>
-          <paper-listbox role="listbox" tabindex="0">
+          <paper-listbox part="menu-container" role="listbox" tabindex="0">
             <slot name="menu"></slot>
           </paper-listbox>
         </app-drawer>
