@@ -8,6 +8,11 @@
     <script type="module" src="../fc-applayout.js"></script>
     <script type="module" src="../node_modules/@vaadin/vertical-layout/vaadin-vertical-layout.js"></script>
     <script type="module" src="../node_modules/@polymer/paper-card/paper-card.js"></script>
+    <script type="module">
+      // Import Lumo theme at document level for dark mode support
+      import '@vaadin/vaadin-lumo-styles/color-global.js';
+      import '@vaadin/vaadin-lumo-styles/typography-global.js';
+    </script>
     <style>
       p {
         border: solid 1px blue;
@@ -16,9 +21,10 @@
 
       html, body {
         margin: 0;
-        font-family: 'Roboto', 'Noto', sans-serif;
+        font-family: var(--lumo-font-family);
         -webkit-font-smoothing: antialiased;
-        background: #f1f1f1;
+        background: var(--lumo-base-color);
+        color: var(--lumo-body-text-color);
         max-height: 368px;
         max-width: 100%;
       }
@@ -33,9 +39,6 @@
 
       app-drawer {
         --app-drawer-scrim-background: rgba(0, 0, 100, 0.8);
-        --app-drawer-content-container: {
-              background-color: #F1F1F1;
-            }
         z-index: 1001;
       }
 
@@ -56,6 +59,7 @@
 
       .hamlet {
         user-select: none;
+        color: black;
       }
 
       .hamlet paper-card {
@@ -67,7 +71,10 @@
         background: rgb(220,248,198);
       }
 
-      .hamlet paper-card h5 {margin-top: 0.25em}
+      .hamlet paper-card h5 {
+        margin-top: 0.25em;
+        color: black;
+      }
 
       .hamlet paper-card[elevation="0"] {
         background: rgb(254,244,197);
@@ -97,6 +104,7 @@
       <img slot="title" class="applogo" src="./applogo.png" alt="applogo">
       <div slot="title" main-title="">AppLayout Vaadin 14 Demo</div>
       <paper-icon-button disabled slot="toolbar" icon="block" role="button" tabindex="0" aria-disabled="false"></paper-icon-button>
+      <paper-icon-button id="darkModeToggle" slot="toolbar" icon="invert-colors" title="Toggle Dark Mode" role="button" tabindex="0" aria-disabled="false"></paper-icon-button>
       <paper-icon-button slot="toolbar" icon="settings" title="Settings" role="button" tabindex="0" aria-disabled="false"></paper-icon-button>
       <div slot="menu">
         <p onclick="this.dispatchEvent(new CustomEvent('item-clicked', {bubbles: true}))">This is menu</p>
@@ -150,5 +158,22 @@
         Howe'er my haps, my joys were ne'er begun. </span></div></div></paper-card><paper-card elevation="0" aria-label=""><div class="card-content"><span>Claudius exits</span></div></paper-card></vaadin-vertical-layout>
       </div>
     </fc-applayout>
+    <script>
+      // Dark mode toggle functionality
+      document.addEventListener('DOMContentLoaded', () => {
+        const darkModeToggle = document.getElementById('darkModeToggle');
+
+        if (darkModeToggle) {
+          darkModeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('theme');
+            if (currentTheme === 'dark') {
+              document.documentElement.removeAttribute('theme');
+            } else {
+              document.documentElement.setAttribute('theme', 'dark');
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>
