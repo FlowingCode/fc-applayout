@@ -26,6 +26,8 @@ import '@polymer/paper-icon-button/paper-icon-button';
 import '@polymer/paper-listbox/paper-listbox';
 import "@polymer/app-layout/app-toolbar/app-toolbar";
 import { ThemableMixin } from '@vaadin/vaadin-themable-mixin';
+import '@vaadin/vaadin-lumo-styles/color.js';
+import '@vaadin/vaadin-lumo-styles/typography.js';
 
 /**
  * FcAppLayoutElement is a custom web component that provides a responsive and customizable application layout.
@@ -47,8 +49,8 @@ export class FcAppLayoutElement extends ThemableMixin(LitElement) {
 
   static override styles = css`
     app-toolbar {
-      background-color: #4285f4;
-      color: #fff;
+      background-color: var(--lumo-primary-color);
+      color: var(--lumo-primary-contrast-color);
       transform: translate3d(0px, 0px, 0px);
       display:flex;
       height: var(--app-header-height, 64px);
@@ -75,8 +77,8 @@ export class FcAppLayoutElement extends ThemableMixin(LitElement) {
 
     app-header {
       position: var(--layout-fixed-top_-_position); top: var(--layout-fixed-top_-_top); left: var(--layout-fixed-top_-_left); right: var(--layout-fixed-top_-_right);
-      color: #fff;
-      --app-header-background-rear-layer_-_background-color:  #ef6c00;;
+      color: var(--lumo-primary-contrast-color);
+      --app-header-background-rear-layer_-_background-color: var(--lumo-primary-color);
       z-index: 1000;
     }
 
@@ -88,6 +90,7 @@ export class FcAppLayoutElement extends ThemableMixin(LitElement) {
     app-drawer paper-listbox {
         overflow-y: auto;
         flex-grow: 1;
+        background-color: var(--lumo-base-color);
     }
 
     .content-container {
@@ -104,6 +107,8 @@ export class FcAppLayoutElement extends ThemableMixin(LitElement) {
     :host {
       width: 100%;
       height: 100%;
+      color: var(--lumo-body-text-color);
+      font-family: var(--lumo-font-family);
     }
   `;
 
@@ -119,21 +124,21 @@ export class FcAppLayoutElement extends ThemableMixin(LitElement) {
    * @type {boolean}
    */
   @property({type: Boolean})
-  reveals = true;    
+  reveals = true;
 
   /**
    * Sets the drawer visibility.
    * @type {boolean}
    */
   @property({type: Boolean})
-  drawerVisible = true;    
-  
+  drawerVisible = true;
+
   /**
    * Sets header fixed.
    * @type {boolean}
    */
   @property({type: Boolean})
-  fixed = false;    
+  fixed = false;
 
   /**
    * The alignment of the drawer on the screen ('left', 'right', 'start' or 'end').
@@ -148,14 +153,14 @@ export class FcAppLayoutElement extends ThemableMixin(LitElement) {
    * @type {boolean}
    */
   @property({type: Boolean})
-  shadow = true;    
+  shadow = true;
 
   /**
    * Makes the drawer to be opened by default, in a non modal way.
    * @type {boolean}
    */
   @property({type: Boolean})
-  drawerPersistent = false;    
+  drawerPersistent = false;
 
   /**
    * Makes the drawer to be shown below the header.
@@ -163,7 +168,7 @@ export class FcAppLayoutElement extends ThemableMixin(LitElement) {
    */
   @property({type: Boolean})
   drawerBelowHeader = false;
-  
+
   @query('#drawer')
   drawer!: AppDrawerElement;
 
@@ -211,8 +216,29 @@ export class FcAppLayoutElement extends ThemableMixin(LitElement) {
   }
 
   override firstUpdated() {
-    this.drawer.shadowRoot!.getElementById("contentContainer")!.style.display="flex";
-    this.drawer.shadowRoot!.getElementById("contentContainer")!.style.flexDirection="column";
+    const contentContainer = this.drawer.shadowRoot!.getElementById("contentContainer")!;
+    contentContainer.style.display = "flex";
+    contentContainer.style.flexDirection = "column";
+
+    // Inject Lumo background color into app-drawer shadow DOM
+    this._injectDrawerStyles();
+  }
+
+  private _injectDrawerStyles() {
+    // Create a style element to inject Lumo variables into shadow DOM
+    let styleEl = this.drawer.shadowRoot!.querySelector('style#lumo-injected');
+    if (!styleEl) {
+      styleEl = document.createElement('style');
+      styleEl.id = 'lumo-injected';
+      this.drawer.shadowRoot!.appendChild(styleEl);
+    }
+
+    // Inject CSS that uses Lumo variables
+    styleEl.textContent = `
+      #contentContainer {
+        background-color: var(--lumo-base-color);
+      }
+    `;
   }
 
   override updated(changedProps: { has: (arg0: string) => any; get: (arg0: string) => any; }) {
@@ -280,16 +306,16 @@ export class FcAppLayoutElement extends ThemableMixin(LitElement) {
     } else {
       //FALSE TRUE
       //FALSE FALSE
-        if (this.drawerAlign == "right") {
-          this.header.style.marginRight = "0px";
-          this.content.style.marginRight = "0px";
-        } else {
-          this.header.style.marginLeft = "0px";
-          this.content.style.marginLeft = "0px";
-        }
+      if (this.drawerAlign == "right") {
+        this.header.style.marginRight = "0px";
+        this.content.style.marginRight = "0px";
+      } else {
+        this.header.style.marginLeft = "0px";
+        this.content.style.marginLeft = "0px";
       }
     }
   }
+}
 
 declare global {
   interface HTMLElementTagNameMap {

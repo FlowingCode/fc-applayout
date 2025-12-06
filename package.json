@@ -58,7 +58,8 @@
     "@polymer/paper-card": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.2",
     "@polymer/paper-listbox": "^3.0.1",
-    "@vaadin/vaadin-themable-mixin": "24.3.8",
+    "@vaadin/vaadin-lumo-styles": "24.3.11",
+    "@vaadin/vaadin-themable-mixin": "24.3.11",
     "lit": "^3.1.2"
   },
   "devDependencies": {
